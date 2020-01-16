@@ -1,2 +1,4 @@
 .DS_Store
 pluralsight/
+*.pyc
+**/__pychache__/**

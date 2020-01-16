@@ -20,11 +20,18 @@ def rotate_list(l):
 if __name__ == "__main__":
     l = [1, 2, 3, 4]
     print(l)
+    # [1, 2, 3, 4]
     l = rotate_list(l)
     print(l)
+    # Calling <function rotate_list at 0x10d5339e0>
+    # [2, 3, 4, 1]
     l = rotate_list(l)
     print(l)
+    # Calling <function rotate_list at 0x10d5339e0>
+    # [3, 4, 1, 2]
     print('disabling tracer')
+    # disabling tracer
     tracer.enabled = False
     l = rotate_list(l)
     print(l)
+    # [4, 1, 2, 3]
