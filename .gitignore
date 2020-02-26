@@ -2,3 +2,4 @@
 pluralsight/
 *.pyc
 **/__pychache__/**
+.vscode/
