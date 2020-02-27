@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>source package &#8212; Pluralsight Documentation Demo 2020 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Pluralsight Documentation Demo’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="source-package">
+<h1>source package<a class="headerlink" href="#source-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-source.generate_apidoc">
+<span id="source-generate-apidoc-module"></span><h2>source.generate_apidoc module<a class="headerlink" href="#module-source.generate_apidoc" title="Permalink to this headline">¶</a></h2>
+<p>Use sphinx’s extension “apidoc” to generate the documentation.</p>
+<p>Step on the folder ‘2-documenting’.</p>
+<dl>
+<dt>Uncomment from the conf.py file:</dt><dd><p>import os
+import sys
+sys.path.insert(0, os.path.abspath(‘..’))</p>
+</dd>
+<dt>Add extensions to conf.py:</dt><dd><dl class="simple">
+<dt>extensions = [</dt><dd><p>‘sphinx.ext.autodoc’,
+‘sphinx.ext.viewcode’
+]</p>
+</dd>
+</dl>
+</dd>
+<dt>Run:</dt><dd><p>‘$ sphinx-apidoc -o docs source’</p>
+<dl class="simple">
+<dt>-o<span class="classifier">output</span></dt><dd><p>docs folder</p>
+</dd>
+</dl>
+<p>source : package I want to generate documentation for</p>
+</dd>
+<dt>Go to /docs and run:</dt><dd><p>‘$ make clean html’</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="source-sphinx-demo-module">
+<h2>source.sphinx-demo module<a class="headerlink" href="#source-sphinx-demo-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-source.type_hints">
+<span id="source-type-hints-module"></span><h2>source.type_hints module<a class="headerlink" href="#module-source.type_hints" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>TYPE HINTS:</dt><dd><p>Make python statically typed</p>
+<p>find type hints in GREEN</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="source.type_hints.FireBreath">
+<em class="property">class </em><code class="sig-prename descclassname">source.type_hints.</code><code class="sig-name descname">FireBreath</code><a class="reference internal" href="_modules/source/type_hints.html#FireBreath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.FireBreath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#source.type_hints.Weapon" title="source.type_hints.Weapon"><code class="xref py py-class docutils literal notranslate"><span class="pre">source.type_hints.Weapon</span></code></a></p>
+<p>FireBreath is a weapon only wielded by dragons or wizards. It can deal a lot of damage,
+but it also has its drawbacks. There is a 30% chance that the attack will not work, and after
+a successful attack you will need to wait a while before you will be able to breath fire again.</p>
+<dl class="method">
+<dt id="source.type_hints.FireBreath.attack">
+<code class="sig-name descname">attack</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple[int, str]<a class="reference internal" href="_modules/source/type_hints.html#FireBreath.attack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.FireBreath.attack" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should return a tuple (damage, text): how much damage was dealt
+and what text to output. Text is a format string with placeholders for attacker
+and defender.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="source.type_hints.Player">
+<em class="property">class </em><code class="sig-prename descclassname">source.type_hints.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">weapon: source.type_hints.Weapon</em>, <em class="sig-param">health: int</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/source/type_hints.html#Player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.Player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Player class represents the characters in the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><strong>health</strong> – The current health of the character. Starts at 100.
+Once it reaches 0, we’re dead.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="source.type_hints.Player.is_alive">
+<em class="property">property </em><code class="sig-name descname">is_alive</code><a class="headerlink" href="#source.type_hints.Player.is_alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if <code class="xref py py-attr docutils literal notranslate"><span class="pre">health</span></code> is larger than 0, False otherwise</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="source.type_hints.Player.take_hit">
+<code class="sig-name descname">take_hit</code><span class="sig-paren">(</span><em class="sig-param">damage: int</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/source/type_hints.html#Player.take_hit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.Player.take_hit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="source.type_hints.Sword">
+<em class="property">class </em><code class="sig-prename descclassname">source.type_hints.</code><code class="sig-name descname">Sword</code><a class="reference internal" href="_modules/source/type_hints.html#Sword"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.Sword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#source.type_hints.Weapon" title="source.type_hints.Weapon"><code class="xref py py-class docutils literal notranslate"><span class="pre">source.type_hints.Weapon</span></code></a></p>
+<p>A primitive close-range weapon. It deals either 5 or 10 damage with a 50/50 chance.</p>
+<dl class="method">
+<dt id="source.type_hints.Sword.attack">
+<code class="sig-name descname">attack</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple[int, str]<a class="reference internal" href="_modules/source/type_hints.html#Sword.attack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.Sword.attack" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should return a tuple (damage, text): how much damage was dealt
+and what text to output. Text is a format string with placeholders for attacker
+and defender.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="source.type_hints.Weapon">
+<em class="property">class </em><code class="sig-prename descclassname">source.type_hints.</code><code class="sig-name descname">Weapon</code><a class="reference internal" href="_modules/source/type_hints.html#Weapon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.Weapon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>This abstract class defines the method <a class="reference internal" href="#source.type_hints.Weapon.attack" title="source.type_hints.Weapon.attack"><code class="xref py py-meth docutils literal notranslate"><span class="pre">attack()</span></code></a> that should be implemented
+by subclasses.</p>
+<dl class="method">
+<dt id="source.type_hints.Weapon.attack">
+<em class="property">abstract </em><code class="sig-name descname">attack</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span> &#x2192; Tuple[int, str]<a class="reference internal" href="_modules/source/type_hints.html#Weapon.attack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#source.type_hints.Weapon.attack" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method should return a tuple (damage, text): how much damage was dealt
+and what text to output. Text is a format string with placeholders for attacker
+and defender.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-source">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-source" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Pluralsight Documentation Demo</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">source package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-source.generate_apidoc">source.generate_apidoc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-sphinx-demo-module">source.sphinx-demo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-source.type_hints">source.type_hints module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-source">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Pluralsight Documentation Demo’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Diego.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/source.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

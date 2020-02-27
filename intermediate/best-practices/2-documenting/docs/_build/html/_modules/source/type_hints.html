@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>source.type_hints &#8212; Pluralsight Documentation Demo 2020 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for source.type_hints</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">TYPE HINTS:</span>
+<span class="sd">    Make python statically typed</span>
+<span class="sd">    </span>
+<span class="sd">    find type hints in GREEN</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Diego Campo&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    weapons.py</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    This module contains classes for Weapons.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="Weapon"><a class="viewcode-back" href="../../source.html#source.type_hints.Weapon">[docs]</a><span class="k">class</span> <span class="nc">Weapon</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This abstract class defines the method :meth:`attack` that should be implemented</span>
+<span class="sd">    by subclasses.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Weapon.attack"><a class="viewcode-back" href="../../source.html#source.type_hints.Weapon.attack">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>     <span class="c1"># TYPE HINT</span>
+        <span class="sd">&quot;&quot;&quot;This method should return a tuple (damage, text): how much damage was dealt</span>
+<span class="sd">        and what text to output. Text is a format string with placeholders for attacker</span>
+<span class="sd">        and defender.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="Sword"><a class="viewcode-back" href="../../source.html#source.type_hints.Sword">[docs]</a><span class="k">class</span> <span class="nc">Sword</span><span class="p">(</span><span class="n">Weapon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A primitive close-range weapon. It deals either 5 or 10 damage with a 50/50 chance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sword.attack"><a class="viewcode-back" href="../../source.html#source.type_hints.Sword.attack">[docs]</a>    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>            <span class="c1"># TYPE HINT</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]),</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;Bam!&quot;</span><span class="p">,</span> <span class="s2">&quot;Whack!&quot;</span><span class="p">,</span> <span class="s2">&quot;Pow!&quot;</span><span class="p">]))</span></div></div>
+
+
+<div class="viewcode-block" id="FireBreath"><a class="viewcode-back" href="../../source.html#source.type_hints.FireBreath">[docs]</a><span class="k">class</span> <span class="nc">FireBreath</span><span class="p">(</span><span class="n">Weapon</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;FireBreath is a weapon only wielded by dragons or wizards. It can deal a lot of damage,</span>
+<span class="sd">    but it also has its drawbacks. There is a 30% chance that the attack will not work, and after</span>
+<span class="sd">    a successful attack you will need to wait a while before you will be able to breath fire again.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39; The number of attacks we will have to wait until we can fire again&#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cooldown</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="FireBreath.attack"><a class="viewcode-back" href="../../source.html#source.type_hints.FireBreath.attack">[docs]</a>    <span class="k">def</span> <span class="nf">attack</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cooldown</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">dmg</span><span class="p">:</span> <span class="nb">int</span>                                <span class="c1"># TYPE HINT</span>
+            <span class="n">sound</span><span class="p">:</span> <span class="nb">str</span>                              <span class="c1"># TYPE HINT</span>
+            <span class="n">dmg</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">dmg</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_cooldown</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">sound</span> <span class="o">=</span> <span class="s2">&quot;Boom! Dragon Fire!&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sound</span> <span class="o">=</span> <span class="s2">&quot;The dragon produces only smoke..&quot;</span>
+            <span class="k">return</span> <span class="n">dmg</span><span class="p">,</span> <span class="n">sound</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cooldown</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;(waiting until it can breath fire again)&quot;</span></div></div>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    player.py</span>
+<span class="sd">    ---------</span>
+
+<span class="sd">    This module contains the Player class that represents game characters.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="Player"><a class="viewcode-back" href="../../source.html#source.type_hints.Player">[docs]</a><span class="k">class</span> <span class="nc">Player</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Player class represents the characters in the game.</span>
+
+<span class="sd">    :ivar health: The current health of the character. Starts at 100.</span>
+<span class="sd">                  Once it reaches 0, we&#39;re dead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TYPE HINTS:</span>
+    <span class="c1"># Add the expected value for the params</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">weapon</span><span class="p">:</span> <span class="n">Weapon</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new Player.</span>
+
+<span class="sd">        :param name: The name of the Player.</span>
+<span class="sd">        :param weapon: The weapon that this Player uses to fight with.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weapon</span> <span class="o">=</span> <span class="n">weapon</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="c1"># TYPE HINTS:</span>
+    <span class="c1"># Add the return value of the method</span>
+<div class="viewcode-block" id="Player.take_hit"><a class="viewcode-back" href="../../source.html#source.type_hints.Player.take_hit">[docs]</a>    <span class="k">def</span> <span class="nf">take_hit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">damage</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">-=</span> <span class="n">damage</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_alive</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;True if :attr:`health` is larger than 0, False otherwise&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Player </span><span class="si">{}</span><span class="s2"> has </span><span class="si">{}</span><span class="s2"> health and brings his </span><span class="si">{}</span><span class="s2"> to the fight&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weapon</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Pluralsight Documentation Demo</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source.html">source package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Diego.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
