@@ -3,3 +3,4 @@ pluralsight/
 *.pyc
 **/__pychache__/**
 .vscode/
+.mypy_cache/
