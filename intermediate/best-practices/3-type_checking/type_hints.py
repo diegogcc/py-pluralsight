@@ -46,7 +46,7 @@ class FireBreath(Weapon):
     a successful attack you will need to wait a while before you will be able to breath fire again.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:                     # TYPE HINT 
         ''' The number of attacks we will have to wait until we can fire again'''
         self._cooldown: int = 0
 
