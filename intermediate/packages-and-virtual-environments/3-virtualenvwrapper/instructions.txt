@@ -1,0 +1,32 @@
+1. Install virtualevwrapper globally
+    '$ pip3 install virtualevwrapper'
+2. Get installation location for virtualevwrapper
+    '$ which virtualevwrapper.sh'
+3. Add the path to the profile file
+    '$ vim ~/.zshrc'
+
+    '#VIRTUALENVWRAPPER'
+    'export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3'
+    'export WORKON_HOME=$HOME/.virtualenvs'
+    'source /usr/local/bin/virtualenvwrapper.sh'
+3.a The WORKON_HOME path should point to the directory that contains
+    your virtualenvs    
+4. Use a virtualenv 
+    '$ workon'          # lists all virtualenvs on WORKON_HOME
+    '$ workon pluralsight'
+    '(pluralsight)$ '
+5. Create new project
+5.a Create a folder for all projects 
+    '$ vim ~/.zshrc'
+    'export PROJECT_HOME="path/to/projects/folder"
+5.b Create project
+    '$ mkproject new_project'           # this creates both directory and virtualenv for the project
+5.c Bind a project to a virtualenv
+    '$ workon project2'
+    '(project2)$ cd path/to/project2'
+    '(project2)$ setvirtualenvproject'
+
+    Other commands
+    'mkvirtualenv new_env'          # create
+    'rmvirtualenv some_env'         # delete
+    'mktmpenv'                      # temporary new env
