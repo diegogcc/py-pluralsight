@@ -1,0 +1,47 @@
+- Using requirements.txt:
+    Not deterministic for subdependencies 
+
+- Using pipenv
+    Uses own format in pipfile 
+    Deterministic for subdependencies
+
+- Using pyproject.toml
+    text base format 
+    uses 'poetry'
+    Deterministic
+
+
+
+
+PIPENV
+
+1. Install pipenv globally
+    '$ python3 -m pip install pipenv'
+2. Install dependencies
+    '$ pipenv install requests'
+2.a Pipenv 
+    - Creates virtual environment bound to project
+    - Installs dependencies
+    - Creates pipfile and pipfile.lock
+3. Check pipfile 
+    '$ vim Pipfile'
+    Contains
+    - URL for source where packages are downloaded (pypi)
+    - dev-packages          
+    - packages 
+    - python version
+4. Check pipfile.lock
+    '$ vim Pipfile.lock'
+    Contains
+    - exact version of every single package installed 
+5. Activate virtual environment and run file
+    '$ pipenv run python3 file.py'
+6. Activate virtual environment separately 
+    '$ pipenv shell'
+    '(project)$ python3 file.py'
+7. Deactivate virtual environment
+    '(project)$ exit'                           # NOT 'deactivate'
+    '$ '
+8. Install on a python3 environment
+    '$ pipenv install --three'
+    Installs everything on Pipfile on a python3 environment

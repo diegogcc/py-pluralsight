@@ -1,0 +1,23 @@
+INSTALLATION
+
+- pip
+    installs packages in a format called 'wheels' (or in an older format called 'eggs')
+
+
+DEVELOPMENT
+
+- Dependency management:    
+    requirements.txt
+- Project isolation:
+    virtualenv
+    venv
+- New projects:
+    pipenv          (pip + virtualenv)
+    poetry          (pip + virtualenv)
+- Anaconda
+    python distribution
+    package manager
+    installer (pip)
+    virtual environment tool
+    installs non-Python packages too
+    Aimed at Data Science

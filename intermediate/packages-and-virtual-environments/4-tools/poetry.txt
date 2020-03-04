@@ -1,0 +1,51 @@
+- Using requirements.txt:
+    Not deterministic for subdependencies 
+
+- Using pipenv
+    Uses own format in pipfile 
+    Deterministic for subdependencies
+
+- Using pyproject.toml
+    text base format 
+    uses 'poetry'
+    Deterministic
+
+
+
+
+POETRY
+
+1. Install poetry globally
+    Go to (https://python-poetry.org/docs/)
+    '$ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python'
+    restart your shell
+    '$ source $HOME/.poetry/env'
+2. Create a new project 
+    '$ poetry new project_name'
+    creates folder project_name
+    '$ cd project_name'
+    inside the folder:
+    - empty README.rst file
+    - project_name folder -> python package with empty __init__.py file
+    - tests folder for unit tests
+    - pyproject.toml    dependencies file 
+3. Install requirements
+    '$ poetry add requests'
+4. Activate virtual environment and run file 
+    '$ poetry run python project_name/file.py'
+5. Activate virtual environment and run file separately
+    '$ poetry shell'
+    '(project_name)$ python3 file.py'
+6. Deactivate virtual environment
+    '(project_name)$ exit'                              # NOT 'deactivate'
+7. Check pyproject.toml
+    '$ vim pyproject.toml'
+    Contains 
+    - meta data 
+    - dependencies
+    - development dependencies
+    - build system section so poetry creates the package 
+8. Check poetry.lock
+    '$ vim poetry.lock'
+    Contains
+    - exact version of every single package installed 
