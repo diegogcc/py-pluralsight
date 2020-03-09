@@ -1,0 +1,33 @@
+1. TEST-LAST PROCESS
+
+    Create test after writing the code.
+
+    Advantage: 
+        Don't invest in designing tests until the design is stable.
+    Risk:
+        Unstable / Non-testable design
+        Discover bugs late in the process 
+        Tests are rushed.
+
+2. TEST-FIRST PROCESS
+
+    Design a rough interface for the code and then begin
+        wrinting all tests. 
+    After that, try to implement the code.
+
+    Advantage:
+        The design is testable
+    Risk:
+        Re-work   ->   hard to predict all the test cases in advance
+    
+3. TEST-DRIVEN PROCESS
+
+    Write one test case for a small piece of functionality
+    Write enough implementation for that test to pass 
+    Refactor until design is looking good
+    Repeat.
+
+    Disadvantage:
+        Takes discipline
+        Refactoring takes skill
+        Unfamiliar
