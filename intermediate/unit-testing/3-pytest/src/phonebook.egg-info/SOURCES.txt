@@ -1,0 +1,13 @@
+README.rst
+setup.py
+src/phonebook/__init__.py
+src/phonebook/__main__.py
+src/phonebook/cli.py
+src/phonebook/data_processing.py
+src/phonebook/phonenumbers.py
+src/phonebook.egg-info/PKG-INFO
+src/phonebook.egg-info/SOURCES.txt
+src/phonebook.egg-info/dependency_links.txt
+src/phonebook.egg-info/entry_points.txt
+src/phonebook.egg-info/requires.txt
+src/phonebook.egg-info/top_level.txt
