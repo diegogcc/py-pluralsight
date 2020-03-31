@@ -1,3 +1,5 @@
+from single_sign_on import SSOToken
+
 class MyService:
 
     def __init__(self, sso_registry):

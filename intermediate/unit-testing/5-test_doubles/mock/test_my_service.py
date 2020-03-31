@@ -6,11 +6,13 @@ from single_sign_on import SingleSignOnRegistry
 from single_sign_on import SSOToken
 
 '''
-Spies are similar to Stubs:
+Mocks are similar to Stubs:
     - have the same methods as the tested object
     - records the method calls it receives, so you can assert they were correct
     - used when you want to make sure that interactions between two objects 
         are happening correctly
+    - When they fail, the stacktrace can lead to the actual line of the error
+        (not the last line that was called in the test)
         
 But:
     - have assertions
@@ -46,3 +48,18 @@ def test_single_sign_on_with_invalid_token():
     response = service.handle(Request("Emily"), token)
     spy_sso_registry.is_valid.assert_called_with(token)
     assert response.text == "Please sign in"
+
+# Mock
+def confirm_token(correct_token):
+    def is_valid(actual_token):
+        if actual_token != correct_token:
+            raise ValueError("wrong token received")
+    return is_valid
+
+def test_single_sign_on_receives_correct_token():
+    mock_sso_registry = Mock(SingleSignOnRegistry)
+    correct_token = SSOToken()
+    mock_sso_registry.is_valid = Mock(side_effect=confirm_token(correct_token))
+    service = MyService(mock_sso_registry)
+    service.handle(Request("Emily"), correct_token)
+    mock_sso_registry.is_valid.assert_called()
