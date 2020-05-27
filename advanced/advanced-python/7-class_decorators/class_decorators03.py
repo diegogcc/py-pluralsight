@@ -136,5 +136,9 @@ if __name__ == "__main__":
             for class properties (e.g celsius) the below limit decorator works 
             but not the new top limit.
 
-            We see how to solve this with the  ABSTRACT BASE CLASS chaper.
+            We see how to solve this with the  ABSTRACT BASE CLASS chapter (class_decorators004.py).
     """
+    t.celsius = -300
+    # RuntimeError: Class invariant 'Temperature not below absolute zero '
+
+    t.celsius = 1e34    # Not detected
